@@ -82,4 +82,7 @@ android {
 }
 
 dependencies {
+	projDependencies.each {
+        add(it.configuration, it.dependency)
+    }
 }
