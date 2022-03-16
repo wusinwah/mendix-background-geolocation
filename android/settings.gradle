@@ -1,2 +1,4 @@
 include ':lib'
+
+include ':mendix-background-geolocation-common'
 project(':mendix-background-geolocation-common').projectDir = new File(rootProject.projectDir, './common')
