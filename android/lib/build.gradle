@@ -82,9 +82,4 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':mendix-background-geolocation')
-
-    projDependencies.each {
-        add(it.configuration, it.dependency)
-    }
 }
