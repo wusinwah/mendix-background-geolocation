@@ -84,9 +84,20 @@ static MAURLocationTransform s_locationTransform = nil;
 
 - (void) notify:(NSString*)message
 {
-    localNotification.fireDate = [NSDate date];
-    localNotification.alertBody = message;
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    NSData * data = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *jserror;
+    NSArray *arr = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&jserror];
+    
+        for(int i=0;i<arr.count;i++){
+            NSDictionary * dict = arr[i];
+            NSLog(@"MY DATA....%@",dict[@"title"]);
+            localNotification.fireDate = [NSDate date];
+            localNotification.alertTitle = dict[@"title"];
+            localNotification.alertBody = dict[@"message"];
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+        
+        }
 }
 
 - (NSString * _Nullable) add:(MAURLocation * _Nonnull)inLocation
