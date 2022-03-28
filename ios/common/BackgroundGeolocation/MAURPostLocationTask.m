@@ -127,6 +127,7 @@ static MAURLocationTransform s_locationTransform = nil;
             
             
             if (ret != nil) {
+                DDLogDebug(@"RECEIVED %@", ret);
                 
                 if([ret hasPrefix:@"NOTIFY:"]){
                     
